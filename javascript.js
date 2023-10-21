@@ -1,39 +1,47 @@
 const NUMBERTEST = /[0-9.]/;
+const OPERATORS = /[+-/x*]/;
 
 let currentNumber = "";
 let savedNumber = "";
 let currentOperator = "";
+let lastEntrySymbol = undefined;
 
 const buttons = document.querySelectorAll(".button");
 const display = document.querySelector("#calculator-display");
 const timeDiv = document.querySelector("#time")
 
-document.addEventListener('DOMContentLoaded', () => loadTime());
+document.addEventListener('DOMContentLoaded', () => displayTime());
 
 buttons.forEach(button => {
-  button.addEventListener('click', () => findInputType(button.textContent));
+  button.addEventListener('click', () => {
+    NUMBERTEST.test(button.textContent) ?
+      updateNumber(button.textContent) : processOperator(button.textContent);
+  });
 });
 
-
-function findInputType(value) {
-  NUMBERTEST.test(value) ? processNumber(value) : processOperator(value);
-}
-
-function processNumber(number) {
-  currentNumber += number;
+function updateNumber(number) {
+  lastEntrySymbol == true ? currentNumber = number : currentNumber += number;
+  lastEntrySymbol = false;
+  displayOutput(currentNumber)
 }
 
 function processOperator(symbol) {
-  console.log("cur:" + currentNumber)
-  console.log("sav:" + savedNumber)
   if (symbol == "C") { clear() };
-  symbol == "=" ? displayOutput() : currentOperator = symbol;
-  savedNumber = currentNumber;
-  currentNumber = "";
+  if (savedNumber == "") {
+    savedNumber = currentNumber;
+    currentNumber = "";
+    currentOperator = symbol;
+    console.log(currentNumber + " / " + savedNumber + " / " + currentOperator)
+    return;
+  };
+  const outputValue = operate(symbol);
+  displayOutput(outputValue);
+
+  if (OPERATORS.test(symbol)) { currentOperator = symbol };
+  resetValues(outputValue);
 }
 
-function displayOutput() {
-  let outputValue = operate();
+function displayOutput(outputValue) {
   const div = document.createElement('div');
   div.classList.add('display-text');
   div.textContent = outputValue;
@@ -41,11 +49,16 @@ function displayOutput() {
   display.appendChild(div);
 }
 
+function resetValues(outputValue) {
+  savedNumber = outputValue;
+  lastEntrySymbol = true;
+}
+
 function operate() {
   let result = 0;
   switch(currentOperator) {
     case "+":
-    result = sum();
+      result = sum();
       break;
     case "x":
       result = product();
@@ -57,8 +70,6 @@ function operate() {
       result = divide();
       break;
   }
-  savedNumber = result;
-  console.log("res:" + result);
   return result;
 }
 
@@ -84,7 +95,7 @@ function clear() {
   currentNumber = "";
 }
 
-function loadTime() {
+function displayTime() {
   const p = document.createElement("p");
   const now = new Date();
   const time = now.getHours() + ":" + now.getMinutes();

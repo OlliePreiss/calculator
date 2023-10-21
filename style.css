@@ -4,19 +4,21 @@
   padding: 25px;
 }
 
+/* BODY */
+
 .body {
   display: flex;
   justify-content: center;
   font-family: 'Roboto', sans-serif;
 }
 
-#calculator-body {
+#calculator {
   background-color: #1C1C1C;
   padding: 16px;
   border-radius: 32px;
 }
 
-#iphone-nav {
+#nav {
   height: 16px;
   display: flex;
   justify-content: space-between;
@@ -81,6 +83,8 @@
   width: 88px;
   border-radius: 32px;
 }
+
+/* FOOTER */
 
 .footer {
   height: 50px;
