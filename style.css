@@ -1,0 +1,101 @@
+.header {
+  text-align: center;
+  font-family: 'Roboto', sans-serif;
+  padding: 25px;
+}
+
+.body {
+  display: flex;
+  justify-content: center;
+  font-family: 'Roboto', sans-serif;
+}
+
+#calculator-body {
+  background-color: #1C1C1C;
+  padding: 16px;
+  border-radius: 32px;
+}
+
+#iphone-nav {
+  height: 16px;
+  display: flex;
+  justify-content: space-between;
+  padding: 0px 8px;
+}
+
+.nav-text {
+  color: white;
+  margin: 0px;
+  font-size: small;
+}
+
+#battery {
+  height: 16px;
+  width: 16px;
+}
+
+#calculator-display {
+  background-color: #1C1C1C;
+  height: 3rem;
+  margin: 8px 0px;
+  display: flex;
+  justify-content: end;
+  align-items: end;
+  padding: 16px;
+}
+
+.display-text {
+  color: white;
+  font-size: 2rem;
+}
+
+.row {
+  display: flex;
+  gap: 8px;
+}
+
+.button {
+  background-color: #505050;
+  color: white;
+  height: 2.5rem;
+  width: 2.5rem;
+  text-align: center;
+  line-height: 2.5rem;
+  vertical-align: middle;
+  font-weight: 400;
+  border-radius: 50%;
+  margin: 4px 0px;
+  cursor: pointer;
+}
+
+.button.symbol {
+  background-color: #FF9500;
+}
+
+.button.special {
+  background-color: #D4D4D2;
+  color: black;
+}
+
+.button.long {
+  width: 88px;
+  border-radius: 32px;
+}
+
+.footer {
+  height: 50px;
+  line-height: 50px;
+  margin: 0px;
+  text-align: center;
+  vertical-align: middle;
+  position: absolute;
+  left: 0;
+  bottom: 0px;
+  width: 100%;
+  font-family: 'Roboto', sans-serif;
+}
+
+.footer h5 {
+  padding: 0px;
+  margin: 0px;
+}

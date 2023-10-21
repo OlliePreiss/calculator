@@ -5,28 +5,57 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Calculator</title>
-  <style src="style.css"></style>
+  <link rel="stylesheet" href="style.css">
   <script src="javascript.js" defer>  </script>
 </head>
 
 <body>
-  <div class="title">
-    <h1> Calculator </h1>
+  <div class="header">
+    <h1> i-Calc </h1>
   </div>
   <div class="body">
-    <div class="calculator-body">
-      <div class="calculator-screen">
+    <div id="calculator-body">
+      <div id="iphone-nav">
+        <div id="time"></div>
+        <img src="full-battery-16.png" alt="battery" id="battery">
       </div>
-      <div class="calculator-buttons">
-        <div class="numbers">
+      <div id="calculator-display"></div>
+      <div id="calculator-buttons">
+        <div class="row">
+          <h3 class="button special">C</h3>
+          <h3 class="button special">+/-</h3>
+          <h3 class="button special">%</h3>
+          <h3 class="button symbol">/</h3>
         </div>
-        <div class="symbols">
+        <div class="row">
+          <h3 class="button">7</h3>
+          <h3 class="button">8</h3>
+          <h3 class="button">9</h3>
+          <h3 class="button symbol">x</h3>
+        </div>
+        <div class="row">
+          <h3 class="button">4</h3>
+          <h3 class="button">5</h3>
+          <h3 class="button">6</h3>
+          <h3 class="button symbol">-</h3>
+        </div>
+        <div class="row">
+          <h3 class="button">1</h3>
+          <h3 class="button">2</h3>
+          <h3 class="button">3</h3>
+          <h3 class="button symbol">+</h3>
+        </div>
+        <div class="row">
+          <h3 class="button long">0</h3>
+          <h3 class="button symbol">.</h3>
+          <h3 class="button symbol">=</h3>
+
         </div>
       </div>
     </div>
   </div>
   <div class="footer">
-    <h4> Copyright @ OlliePreiss </h4>
+    <h5> Copyright @ OlliePreiss </h4>
   </div>
 </body>
 </html>
