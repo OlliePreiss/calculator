@@ -31,7 +31,6 @@ function processOperator(symbol) {
     savedNumber = currentNumber;
     currentNumber = "";
     currentOperator = symbol;
-    console.log(currentNumber + " / " + savedNumber + " / " + currentOperator)
     return;
   };
   const outputValue = operate(symbol);
