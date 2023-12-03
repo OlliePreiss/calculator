@@ -44,11 +44,14 @@
   justify-content: end;
   align-items: end;
   padding: 16px;
+  max-width: 152px;
 }
 
 .display-text {
   color: white;
   font-size: 2rem;
+  max-width: 100%;
+  overflow: scroll;
 }
 
 .row {

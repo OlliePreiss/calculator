@@ -5,6 +5,7 @@ let currentNumber = "";
 let savedNumber = "";
 let currentOperator = "";
 let lastEntrySymbol = undefined;
+let lastEntryEquals = false
 
 const buttons = document.querySelectorAll(".button");
 const display = document.querySelector("#calculator-display");
@@ -14,12 +15,14 @@ document.addEventListener('DOMContentLoaded', () => displayTime());
 
 buttons.forEach(button => {
   button.addEventListener('click', () => {
+    // determine whether a bnumber of operator has been clicked
     NUMBERTEST.test(button.textContent) ?
       updateNumber(button.textContent) : processOperator(button.textContent);
   });
 });
 
 function updateNumber(number) {
+  // if the last button a user clicked is an operator, start a new number
   lastEntrySymbol == true ? currentNumber = number : currentNumber += number;
   lastEntrySymbol = false;
   displayOutput(currentNumber)
@@ -27,17 +30,29 @@ function updateNumber(number) {
 
 function processOperator(symbol) {
   if (symbol == "C") { clear() };
+
+  // if the user has only entered one number, do not attempt calculations
   if (savedNumber == "") {
     savedNumber = currentNumber;
     currentNumber = "";
     currentOperator = symbol;
     return;
   };
-  const outputValue = operate(symbol);
-  displayOutput(outputValue);
 
-  if (OPERATORS.test(symbol)) { currentOperator = symbol };
-  resetValues(outputValue);
+  if (OPERATORS.test(symbol) && lastEntryEquals) {
+    console.log("test1")
+    currentOperator = symbol
+    lastEntryEquals = false;
+  } else {
+    console.log("test2")
+    const outputValue = operate();
+    displayOutput(outputValue);
+    if (OPERATORS.test(symbol)) { currentOperator = symbol };
+    resetValues(outputValue);
+  }
+
+  symbol == "=" ? lastEntryEquals = true : lastEntryEquals = false;
+
 }
 
 function displayOutput(outputValue) {
